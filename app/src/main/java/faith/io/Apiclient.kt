@@ -3,7 +3,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object  Apiclient{
     var retrofit=Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com/")
+        .baseUrl("https://jsonplaceholder.typicode.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
