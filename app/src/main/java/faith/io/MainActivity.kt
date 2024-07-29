@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun fetchPosts(){
-        val apiInterface=Apiclient.buildApiInterface(PostApiInterface::class.java)
-        val request = apiInterface.getPosts()
+        val apiClient=Apiclient.buildApiClient(PostApiInterface::class.java)
+        val request = apiClient.getPosts()
         request.enqueue(object : Callback<List<Post>> {
             override fun onResponse(p0: Call<List<Post>>, p1: Response<List<Post>>) {
                 if(p1.isSuccessful){
