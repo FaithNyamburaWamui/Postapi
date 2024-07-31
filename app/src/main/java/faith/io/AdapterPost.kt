@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import faith.io.databinding.PostListItemBinding
 
-class AdapterPost (val body:List<Post>, val context:Context):RecyclerView.Adapter<PostViewHolder>(){
+class AdapterPost(val body: List<Post>, val context:Context):RecyclerView.Adapter<PostViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding=PostListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return PostViewHolder(binding)
@@ -16,6 +16,7 @@ class AdapterPost (val body:List<Post>, val context:Context):RecyclerView.Adapte
     override fun getItemCount(): Int {
         return body.size
     }
+
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val body=body[position]

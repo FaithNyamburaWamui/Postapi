@@ -3,10 +3,8 @@ package faith.io
 import Apiclient
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import faith.io.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,31 +19,31 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fetchPosts()
         binding.rvRecycler.layoutManager=LinearLayoutManager(this)
-
+        fetchPosts()
     }
 
     fun fetchPosts(){
         val apiClient=Apiclient.buildApiClient(PostApiInterface::class.java)
         val request = apiClient.getPosts()
         request.enqueue(object : Callback<List<Post>> {
-            override fun onResponse(p0: Call<List<Post>>, p1: Response<List<Post>>) {
-                if(p1.isSuccessful){
-                    val posts = p1.body()
+            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                if (response.isSuccessful) {
+                    val posts = response.body()
                     posts?.let {
-                        val adapterPost=AdapterPost(it)
-                        binding.rvRecycler.adapter=adapterPost
+                        val adapterPost = AdapterPost(it,this@MainActivity)
+                        binding.rvRecycler.adapter = adapterPost
+                        Toast.makeText(this@MainActivity, "Fetched ${posts.size} posts", Toast.LENGTH_LONG).show()
+                    } ?: run {
+                        Toast.makeText(this@MainActivity, "No posts found", Toast.LENGTH_LONG).show()
                     }
-                    Toast.makeText(baseContext,"Fetch ${posts!!.size} posts", Toast.LENGTH_LONG).show()
-                }
-                else if(p1 !=null){
-                    Toast.makeText(baseContext,"No post recieved",Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this@MainActivity, "Failed to fetch posts", Toast.LENGTH_LONG).show()
                 }
             }
 
-            override fun onFailure(p0: Call<List<Post>>, p1: Throwable) {
-               Toast.makeText(baseContext,p1.message.toString(),Toast.LENGTH_LONG).show()
+            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+               Toast.makeText(this@MainActivity,t.message.toString(),Toast.LENGTH_LONG).show()
             }
 
         })
