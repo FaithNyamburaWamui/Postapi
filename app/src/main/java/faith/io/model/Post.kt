@@ -1,4 +1,4 @@
-package faith.io
+package faith.io.model
 
 data class Post(
     var userId:Int,

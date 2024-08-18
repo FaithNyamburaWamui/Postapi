@@ -1,4 +1,4 @@
-package faith.io
+package faith.io.ui
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import faith.io.databinding.PostListItemBinding
+import faith.io.model.Post
 
 class AdapterPost(val body: List<Post>, val context:Context):RecyclerView.Adapter<PostViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -25,7 +26,7 @@ class AdapterPost(val body: List<Post>, val context:Context):RecyclerView.Adapte
         holder.binding.user.text=body.userId.toString()
         holder.binding.body.text=body.body
         holder.binding.clPost.setOnClickListener{
-            val intent = Intent(context,CommentsActivity::class.java)
+            val intent = Intent(context, CommentsActivity::class.java)
             intent.putExtra("POST_ID", body.id)
             context.startActivity(intent)
         }

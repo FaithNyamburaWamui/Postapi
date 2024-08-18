@@ -1,4 +1,4 @@
-package faith.io
+package faith.io.model
 
 import retrofit2.http.Body
 

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CommentsActivity">
+    android:layout_height="wrap_content"
+    tools:context=".ui.CommentsActivity">
 
     <TextView
-        android:id="@+id/tvPostTittle"
+        android:id="@+id/tvPostBody"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -19,47 +19,27 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
 
-    <TextView
-        android:id="@+id/tvPostBody"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPostTittle"
-        tools:text="TextView" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvComments"
         android:layout_width="409dp"
         android:layout_height="638dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPostBody" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPostName"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        tools:text="TextView"
+        android:layout_marginTop="35dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPostBody" />
-
-    <TextView
-        android:id="@+id/tvPostEmail"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        tools:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPostName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPostBody"
+        tools:text="TextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
