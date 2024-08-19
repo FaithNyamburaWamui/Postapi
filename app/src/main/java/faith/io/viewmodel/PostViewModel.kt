@@ -29,17 +29,6 @@ class PostViewModel:ViewModel() {
         }
     }
 
-//    suspend fun fetchPostById(postId:Int){
-//            viewModelScope.launch {
-//                val response=postsRepo.fetchPostById(postId)
-//                if (response.isSuccessful){
-//                    postLiveData.postValue(response.body())
-//                }
-//                else{
-//                    errorLiveData.postValue(response.errorBody()?.string())
-//                }
-//            }
-//        }
       fun fetchComments(postId: Int){
         viewModelScope.launch {
             val response=postsRepo.fetchComments(postId)

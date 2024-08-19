@@ -1,5 +1,6 @@
 package faith.io.ui
 
+import android.content.Intent
 import faith.io.api.Apiclient
 import android.os.Bundle
 import android.util.Log
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         postViewModel.fetchPost()
         binding.rvRecycler.layoutManager=LinearLayoutManager(this)
+
+        binding.floatingbtn.setOnClickListener{
+            val intent=Intent(this,CreatePostActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

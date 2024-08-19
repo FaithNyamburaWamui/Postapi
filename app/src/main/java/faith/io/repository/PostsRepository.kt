@@ -18,12 +18,6 @@ class PostsRepository {
         }
     }
 
-//    suspend fun fetchPostById(postId:Int):Response<Post>{
-//        return withContext(Dispatchers.IO){
-//            apiClient.fetchPostById(postId)
-//        }
-//    }
-
     suspend fun fetchComments(postId: Int):Response<List<Comments>>{
         return  withContext(Dispatchers.IO){
             apiClient.fetchComments(postId)
